@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLingo - Your Study Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #FFD700 0%, #87CEEB 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .loading-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .loading-text {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #000000;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.15em solid #000000;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: 
+                typing 1.5s steps(9, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        .subtext {
+            font-size: 1.5rem;
+            color: #000000;
+            opacity: 0;
+            animation: fade-in-type 2s 1.5s forwards;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #000000 }
+        }
+        @keyframes fade-in-type {
+            0% { opacity: 0; width: 0; }
+            1% { opacity: 1; width: 0; }
+            100% { opacity: 1; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-text">CodeLingo</div>
+        <div class="subtext">Your Study Companion</div>
+    </div>
+</body>
+</html>
