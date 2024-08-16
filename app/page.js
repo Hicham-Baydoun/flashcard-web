@@ -1,25 +1,28 @@
 "use client";
+import { db, analytics } from './firebaseClient';
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
+import { logEvent } from 'firebase/analytics';
 
 export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [darkMode, setDarkMode] = useState(false);
-  const [db, setDb] = useState(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setDarkMode(true);
     }
 
-    // Import Firebase only on the client side
-    import('../firebase').then((firebase) => {
-      setDb(firebase.db);
-    }).catch((error) => {
-      console.error('Error loading Firebase:', error);
-    });
+    // Track page view
+    if (typeof window !== 'undefined' && analytics) {
+      logEvent(analytics, 'page_view', {
+        page_title: 'Home',
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -38,6 +41,13 @@ export default function Home() {
       alert('Successfully added to waiting list');
       setName('');
       setEmail('');
+      
+      // Track custom event
+      if (analytics) {
+        logEvent(analytics, 'waiting_list_signup', {
+          method: 'form_submission'
+        });
+      }
     } catch (error) {
       console.error('Error adding to waiting list: ', error);
       alert('Error adding to waiting list. Please try again.');

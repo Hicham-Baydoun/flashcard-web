@@ -1,14 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    webpack: (config) => {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-      
-      return config;
-    },
-  };
-  
-  export default nextConfig;
+  reactStrictMode: true,
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    return config;
+  },
+  experimental: {
+    forceSwcTransforms: true,
+  },
+};
+
+export default nextConfig;
