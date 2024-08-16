@@ -5,8 +5,9 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFD700 0%, #87CEEB 100%);
-  transition: background 0.3s ease;
+  background: linear-gradient(120deg, #f6f9fc 0%, #e9f2f9 100%);
+  transition: background 0.3s ease, color 0.3s ease;
+  color: #333;
 }
 
 .darkMode {
@@ -14,14 +15,15 @@
   color: #fff;
 }
 
+/* Sun icon (darkModeToggle) */
 .darkModeToggle {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0)
 }
 
 .header {
@@ -32,11 +34,13 @@
 .header h1 {
   font-size: 4rem;
   margin-bottom: 0.5rem;
+  color: #3a86ff; /* Light mode color */
 }
 
 .header h2 {
   font-size: 1.5rem;
   font-weight: normal;
+  color: #4a4e69;
 }
 
 .grid {
@@ -50,8 +54,8 @@
 .card {
   padding: 1.5rem;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -63,21 +67,23 @@
 .card h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: #3a86ff; /* Light mode color */
 }
 
 .waitingList {
   margin-top: 3rem;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
   border-radius: 10px;
   width: 100%;
   max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .waitingList h2 {
   text-align: center;
   margin-bottom: 1.5rem;
+  color: #3a86ff; /* Light mode color */
 }
 
 .waitingList form {
@@ -88,40 +94,75 @@
 
 .waitingList input {
   padding: 0.75rem;
-  border: none;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.8);
+  background: #f9f9f9;
+  color: #333;
 }
 
+.credits ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.credits li {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #4a4e69;
+}
+
+.credits li::before {
+  content: "✓";
+  color: #3a86ff; /* Light mode color */
+  margin-right: 0.5rem;
+}
+
+/* Join Waitlist button */
 .waitingList button {
   padding: 0.75rem;
   border: none;
   border-radius: 5px;
-  background: #0070f3;
+  background: #3a86ff; /* Changed to #3a86ff for light mode */
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.waitingList button:hover {
-  background: #0056b3;
 }
 
 .darkMode .card,
 .darkMode .waitingList {
   background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .darkMode input {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
+  border-color: #4a4e69;
 }
 
-.darkMode button {
-  background: #4a4a4a;
+.darkMode .header h1,
+.darkMode .card h2,
+.darkMode .waitingList h2 {
+  color: #00ffb3; /* Dark mode color */
 }
 
-.darkMode button:hover {
-  background: #3a3a3a;
+.darkMode .header h2,
+.darkMode .credits li {
+  color: #b8c1ec;
+}
+
+.darkMode .credits li::before {
+  content: "✓";
+  color: #00ffb3; /* Dark mode color */
+  margin-right: 0.5rem;
+}
+
+/* Join Waitlist button in Dark Mode */
+.darkMode .waitingList button {
+  background: #00ffb3; /* Keep the dark mode button color unchanged */
+  color: #1a1a2e;
+}
+
+.darkModeToggle button {
+  /* Styles for dark mode toggle button */
 }

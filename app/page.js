@@ -2,24 +2,34 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
-import firebase from 'firebase/app';
-import { collection, addDoc } from 'firebase/firestore';
 
 export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [darkMode, setDarkMode] = useState(false);
+  const [db, setDb] = useState(null);
 
   useEffect(() => {
-    // Check for user's preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setDarkMode(true);
     }
+
+    // Import Firebase only on the client side
+    import('../firebase').then((firebase) => {
+      setDb(firebase.db);
+    }).catch((error) => {
+      console.error('Error loading Firebase:', error);
+    });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!db) {
+      console.error('Firebase not initialized');
+      return;
+    }
     try {
+      const { collection, addDoc } = await import('firebase/firestore');
       await addDoc(collection(db, 'waitingList'), {
         name,
         email,
@@ -51,22 +61,22 @@ export default function Home() {
 
       <div className={styles.grid}>
         <div className={styles.card}>
-          <h2>Purpose</h2>
-          <p>Empower learners to master programming languages through interactive study tools.</p>
+          <h2 className={styles.credits}><ul><li>Purpose</li></ul></h2>
+          <p>Make your journy .</p>
         </div>
 
         <div className={styles.card}>
-          <h2>Goal</h2>
+        <h2 className={styles.credits}><ul><li>Goal</li></ul></h2>
           <p>Provide a comprehensive platform for efficient and engaging coding education.</p>
         </div>
 
         <div className={styles.card}>
-          <h2>Future Upgrade</h2>
+        <h2 className={styles.credits}><ul><li>Future Upgrades</li></ul></h2>
           <p>Implement AI-driven personalized learning paths and real-time code analysis.</p>
         </div>
 
         <div className={styles.card}>
-          <h2>Made By</h2>
+        <h2 className={styles.credits}><ul><li>Made By</li></ul></h2>
           <p>A team of passionate developers committed to revolutionizing coding education.</p>
         </div>
       </div>
