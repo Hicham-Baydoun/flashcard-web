@@ -62,22 +62,27 @@ export default function Home() {
       <div className={styles.grid}>
         <div className={styles.card}>
           <h2 className={styles.credits}><ul><li>Purpose</li></ul></h2>
-          <p>Make your journy .</p>
+          <p>Transform your learning journey into a seamless and enjoyable experience.</p>
         </div>
 
         <div className={styles.card}>
         <h2 className={styles.credits}><ul><li>Goal</li></ul></h2>
-          <p>Provide a comprehensive platform for efficient and engaging coding education.</p>
+          <p>Deliver a comprehensive platform for efficient and engaging coding education, ensuring accessibility for learners of all backgrounds.</p>
         </div>
 
         <div className={styles.card}>
         <h2 className={styles.credits}><ul><li>Future Upgrades</li></ul></h2>
-          <p>Implement AI-driven personalized learning paths and real-time code analysis.</p>
+          <p>Implement AI-driven personalized learning paths, real-time code analysis, and more.</p>
         </div>
 
         <div className={styles.card}>
         <h2 className={styles.credits}><ul><li>Made By</li></ul></h2>
-          <p>A team of passionate developers committed to revolutionizing coding education.</p>
+          <p>
+            <a href="https://www.linkedin.com/in/nada-baydoun/" target="_blank" rel="noopener noreferrer">.Nada Baydoun</a><br />
+            <a href="https://www.linkedin.com/in/mohammad-ali-alaawar/" target="_blank" rel="noopener noreferrer">.Mohamad Ali Alaaawar</a><br />
+            <a href="https://www.linkedin.com/in/jana-w-63743222b/" target="_blank" rel="noopener noreferrer">.Jana Ward</a><br />
+            <a href="https://www.linkedin.com/in/hicham-baydoun/" target="_blank" rel="noopener noreferrer">.Hicham Baydoun</a>
+          </p>
         </div>
       </div>
 
