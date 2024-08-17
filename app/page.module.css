@@ -15,7 +15,6 @@
   color: #fff;
 }
 
-/* Sun icon (darkModeToggle) */
 .darkModeToggle {
   position: absolute;
   top: 20px;
@@ -23,7 +22,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0)
+  background: rgba(0, 0, 0, 0);
 }
 
 .header {
@@ -34,7 +33,7 @@
 .header h1 {
   font-size: 4rem;
   margin-bottom: 0.5rem;
-  color: #3a86ff; /* Light mode color */
+  color: #3a86ff;
 }
 
 .header h2 {
@@ -67,7 +66,7 @@
 .card h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #3a86ff; /* Light mode color */
+  color: #3a86ff;
 }
 
 .waitingList {
@@ -83,7 +82,7 @@
 .waitingList h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #3a86ff; /* Light mode color */
+  color: #3a86ff;
 }
 
 .waitingList form {
@@ -113,16 +112,15 @@
 
 .credits li::before {
   content: "✓";
-  color: #3a86ff; /* Light mode color */
+  color: #3a86ff;
   margin-right: 0.5rem;
 }
 
-/* Join Waitlist button */
 .waitingList button {
   padding: 0.75rem;
   border: none;
   border-radius: 5px;
-  background: #3a86ff; /* Changed to #3a86ff for light mode */
+  background: #3a86ff;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -143,7 +141,7 @@
 .darkMode .header h1,
 .darkMode .card h2,
 .darkMode .waitingList h2 {
-  color: #00ffb3; /* Dark mode color */
+  color: #00ffb3;
 }
 
 .darkMode .header h2,
@@ -152,17 +150,36 @@
 }
 
 .darkMode .credits li::before {
-  content: "✓";
-  color: #00ffb3; /* Dark mode color */
-  margin-right: 0.5rem;
+  color: #00ffb3;
 }
 
-/* Join Waitlist button in Dark Mode */
 .darkMode .waitingList button {
-  background: #00ffb3; /* Keep the dark mode button color unchanged */
+  background: #00ffb3;
   color: #1a1a2e;
 }
 
-.darkModeToggle button {
-  /* Styles for dark mode toggle button */
+@media (max-width: 768px) {
+  .main {
+    padding: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .header h2 {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .waitingList {
+    padding: 1.5rem;
+  }
 }

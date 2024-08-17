@@ -9,11 +9,19 @@ export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [darkMode, setDarkMode] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setDarkMode(true);
     }
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
     // Track page view
     if (typeof window !== 'undefined' && analytics) {
@@ -23,6 +31,8 @@ export default function Home() {
         page_path: window.location.pathname,
       });
     }
+
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -59,7 +69,7 @@ export default function Home() {
   };
 
   return (
-    <main className={`${styles.main} ${darkMode ? styles.darkMode : ''}`}>
+    <main className={`${styles.main} ${darkMode ? styles.darkMode : ''} ${isMobile ? styles.mobile : ''}`}>
       <button onClick={toggleDarkMode} className={styles.darkModeToggle}>
         {darkMode ? '☀️' : '🌙'}
       </button>
@@ -89,7 +99,7 @@ export default function Home() {
         <h2 className={styles.credits}><ul><li>Made By</li></ul></h2>
           <p>
             <a href="https://www.linkedin.com/in/nada-baydoun/" target="_blank" rel="noopener noreferrer">.Nada Baydoun</a><br />
-            <a href="https://www.linkedin.com/in/mohammad-ali-alaawar/" target="_blank" rel="noopener noreferrer">.Mohamad Ali Alaaawar</a><br />
+            <a href="https://www.linkedin.com/in/mohammad-ali-alaawar/" target="_blank" rel="noopener noreferrer">.Mohamad Ali Alaawar</a><br />
             <a href="https://www.linkedin.com/in/jana-w-63743222b/" target="_blank" rel="noopener noreferrer">.Jana Ward</a><br />
             <a href="https://www.linkedin.com/in/hicham-baydoun/" target="_blank" rel="noopener noreferrer">.Hicham Baydoun</a>
           </p>
